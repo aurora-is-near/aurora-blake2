@@ -1,4 +1,4 @@
-use blake2;
+use aurora_blake2;
 
 // https://tools.ietf.org/html/rfc7693#appendix-A
 #[test]
@@ -43,7 +43,7 @@ fn blake2b_f_function() {
         0xd4, 0x0, 0x99, 0x23,
     ];
 
-    let res = blake2::blake2b_f(rounds, h, m, t, f_bool);
+    let res = aurora_blake2::blake2b_f(rounds, h, m, t, f_bool);
 
     assert_eq!(res.as_slice(), output);
 }
@@ -70,7 +70,7 @@ fn blake2s_f_function() {
         0x59, 0x82,
     ];
 
-    let res = blake2::blake2s_f(rounds, h, m, t, f_bool);
+    let res = aurora_blake2::blake2s_f(rounds, h, m, t, f_bool);
 
     assert_eq!(res.as_slice(), output);
 }

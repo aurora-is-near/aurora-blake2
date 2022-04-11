@@ -1,4 +1,4 @@
-use near_blake2::{Blake2s, Digest};
+use aurora_blake2::{Blake2s, Digest};
 use std::env;
 use std::fs;
 use std::io::{self, Read};

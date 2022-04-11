@@ -1,5 +1,5 @@
 use hex_literal::hex;
-use near_blake2::{Blake2b, Blake2s, Digest};
+use aurora_blake2::{Blake2b, Blake2s, Digest};
 
 #[test]
 fn blake2s_persona() {
