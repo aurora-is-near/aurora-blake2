@@ -1,10 +1,11 @@
 [package]
-name = "near-blake2"
+name = "aurora-blake2"
 version = "0.9.1"
 description = "BLAKE2 hash functions"
 authors = [
     "RustCrypto Developers",
     "Near Inc <hello@nearprotocol.com>",
+    "Aurora Labs <hello@aurora.dev>",
 ]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
