@@ -14,7 +14,6 @@ pub use self::simdty::{u32x4, u64x4};
 
 pub trait Vector4<T>: Copy {
     fn gather(src: &[T], i0: usize, i1: usize, i2: usize, i3: usize) -> Self;
-
     // Usually, this should be fixed but to keep it inline with blake2 upstream,
     // we will leave it as is for maximum compatibility.
     #[allow(clippy::wrong_self_convention)]
@@ -110,7 +109,8 @@ macro_rules! impl_vector4 {
             #[inline(always)]
             fn shuffle_left_1(self) -> Self {
                 use crate::simd::simdint::simd_shuffle4;
-                unsafe { simd_shuffle4(self, self, [1, 2, 3, 0]) }
+                const IDX: [u32; 4] = [1, 2, 3, 0];
+                unsafe { simd_shuffle4(self, self, IDX) }
             }
 
             #[cfg(not(feature = "simd"))]
@@ -123,7 +123,8 @@ macro_rules! impl_vector4 {
             #[inline(always)]
             fn shuffle_left_2(self) -> Self {
                 use crate::simd::simdint::simd_shuffle4;
-                unsafe { simd_shuffle4(self, self, [2, 3, 0, 1]) }
+                const IDX: [u32; 4] = [2, 3, 0, 1];
+                unsafe { simd_shuffle4(self, self, IDX) }
             }
 
             #[cfg(not(feature = "simd"))]
@@ -136,7 +137,8 @@ macro_rules! impl_vector4 {
             #[inline(always)]
             fn shuffle_left_3(self) -> Self {
                 use crate::simd::simdint::simd_shuffle4;
-                unsafe { simd_shuffle4(self, self, [3, 0, 1, 2]) }
+                const IDX: [u32; 4] = [3, 0, 1, 2];
+                unsafe { simd_shuffle4(self, self, IDX) }
             }
 
             #[cfg(not(feature = "simd"))]
